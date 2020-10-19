@@ -19,6 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('password');
             $table->string('confirm_password');
+            $table->string('current_location_name')->nullable();
+            $table->string('current_location_latitude')->nullable();
+            $table->string('current_location_longitude')->nullable();
+            $table->string("token")->nullable();
+            $table->string("mac_id")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

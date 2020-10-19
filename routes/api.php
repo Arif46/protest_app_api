@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::post('/Signup','AuthController@signupcreare');
 Route::post('/Login','AuthController@Login');
@@ -24,6 +22,9 @@ Route::post('/Login','AuthController@Login');
 Route::middleware('auth:api')->group( function () {
   
     Route::post('/TrustAdd','TrustController@trustdatainsert');
+    Route::post('/TrustUpdate/{id}','TrustController@trustUpdate');
+    Route::post('/UserInfoUpdate/{id}','UserUpdateController@userupdate');
+   
   
 });
  

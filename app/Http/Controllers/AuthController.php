@@ -14,8 +14,13 @@ class AuthController extends Controller
         $validator=Validator::make($req->all(),[
             'name'=>'required|string',
             'phone'=>'required|string|unique:users,phone',
-            'password'=>'required',
-            'confirm_password'=>'required',
+            'password'=>'required|string',
+            'confirm_password'=>'required|string',
+            'current_location_name'=>'sometimes|nullable|string',
+            'current_location_latitude'=>'sometimes|nullable|string',
+            'current_location_longitude'=>'sometimes|nullable|string',
+            'token'=>'sometimes|nullable|string',
+            'mac_id'=>'sometimes|nullable|string',
         ]);
       
         if($validator->fails()){
@@ -27,6 +32,11 @@ class AuthController extends Controller
         $singupcreate->phone=$req->phone;
         $singupcreate->password=Hash::make($req->password);
         $singupcreate->confirm_password=$req->confirm_password;
+        $singupcreate->current_location_name=$req->current_location_name;
+        $singupcreate->current_location_latitude=$req->current_location_latitude;
+        $singupcreate->current_location_longitude=$req->current_location_longitude;
+        $singupcreate->token=$req->token;
+        $singupcreate->mac_id=$req->mac_id;
         if($singupcreate->save()){
             return response()->json(['Success'=>'true','message'=>'Register Sucessfully Added'],200);
         }else{

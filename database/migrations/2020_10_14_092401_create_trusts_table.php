@@ -16,11 +16,11 @@ class CreateTrustsTable extends Migration
         Schema::create('trusts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->string('trust_one');
-            $table->string('trust_two');
-            $table->string('trust_three');
-            $table->string('trust_four');
-            $table->string('trust_five');
+            $table->json('trust_one');
+            $table->json('trust_two');
+            $table->json('trust_three');
+            $table->json('trust_four')->nullable();
+            $table->json('trust_five')->nullable();
             $table->timestamps();
         });
     }
